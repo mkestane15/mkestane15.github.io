@@ -1,0 +1,18 @@
+#Gorkem Kestane Tez Ödevi
+
+function distmat_euclideanDistanceDurum1(x1::Array{Int64,2},x2::Array{Int64,2})
+#iki farkli array icin hesapliyor
+    (n1,boyutd1)=size(x1)
+    (n2,boyutd2)=size(x2)
+    if(boyutd1!=boyutd2)
+        error("Matrislerin sutun indisi boyutd, matrislerde euclidean distance hesaplayabilmek icin esit olmalidir")
+    end
+    DistanceD=sqrt.((ones(n1)*sum(x2.^2.0,2)')+(ones(n2)*sum(x1.^2.0,2)')'-2.0.*x1*x2');
+end
+
+#ayni iki  array icin hesapliyor
+function distmat_euclideanDistanceDurum2(x::Array{Float64,2})
+    n=size(x,1)
+    GG= x*x';
+    DistanceD= sqrt.(ones(n)*diag(GG)'+diag(GG)*ones(1,n)-2.0.*GG)
+end
